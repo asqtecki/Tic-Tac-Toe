@@ -45,7 +45,7 @@ int game(char init[][size]) {
         for (int j=0;j<size;j++) 
             init[i][j] = ' ';
     }
-    char play[size][size], inp = 'X';
+    char inp = 'X';
     int pos, r, c, win=0, counter=0;
     bool cond = false;
     char ask, tar = 'X';;
@@ -55,7 +55,6 @@ int game(char init[][size]) {
         cond = true;
         cout << "\nLoading...";
         Sleep(1000);
-        //system("cls");
         cout << "\nPlayer 1: X, Player 2: O\n";
     }
     else {
