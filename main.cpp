@@ -2,7 +2,7 @@
 #include <conio.h>
 #include <cstdlib>
 #include <windows.h>
-using namespace std;
+
 //declarations
 const int size=3; //3x3
 const int cell = 4; //size of each cell
@@ -35,8 +35,8 @@ void board(char init[][size]) {
     }
     for (int i=0;i<W;i++) {
         for (int j=0;j<W;j++)
-            cout << b[i][j];
-        cout << endl;
+            std::cout << b[i][j];
+        std::cout << std::endl;
     }
 }
 
@@ -49,29 +49,29 @@ int game(char init[][size]) {
     int pos, r, c, win=0, counter=0;
     bool cond = false;
     char ask, tar = 'X';;
-    cout << "Press y to START: ";
-    ask = getche();
+    std::cout << "Press y to START: ";
+    ask = _getche();
     if (ask=='y' || ask=='Y') {
         cond = true;
-        cout << "\nLoading...";
+        std::cout << "\nLoading...";
         Sleep(1000);
-        cout << "\nPlayer 1: X, Player 2: O\n";
+        std::cout << "\nPlayer 1: X, Player 2: O\n";
     }
     else {
-        cout << "\nExiting...";
+        std::cout << "\nExiting...";
         Sleep(1000);
         return -1;
     }
     while (cond) {
         for (int i=0;i<2;i++) {
-            cout << "\nPlayer " << (tar=='X' ? 1 : 2) << ", Enter 1-9 to input: ";
-            cin >> pos;
+            std::cout << "\nPlayer " << (tar=='X' ? 1 : 2) << ", Enter 1-9 to input: ";
+            std::cin >> pos;
             r = (pos-1) / 3;
             c = (pos-1) % 3; 
             if (pos<1 || pos>9 || init[r][c]!=' ')  {
-                cout << "Invalid Input!, Press Enter to Input again.";
-                cin.get();
-                cin.ignore();
+                std::cout << "Invalid Input!, Press Enter to Input again.";
+                std::cin.get();
+                std::cin.ignore();
                 continue;
             }
             init[r][c] = tar;
@@ -108,7 +108,7 @@ int winner(char init[][size]) {
 }
 
 int main() {
-    cout << "\t\t\t\tWelcome to Tic Tac Toe!\n";
+    std::cout << "\t\t\t\tWelcome to Tic Tac Toe!\n";
     char init[size][size] = {
         '1', '2', '3',
         '4', '5', '6',
@@ -116,7 +116,7 @@ int main() {
     };
     board(init);
     int win = game(init);
-    if (win == 1) cout << "\nPlayer 1 (X) Wins!";
-    else if (win == 2) cout << "\nPlayer 2 (O) Wins!";
-    else if (win==0) cout << "\nGame Drawn!";
+    if (win == 1) std::cout << "\nPlayer 1 (X) Wins!";
+    else if (win == 2) std::cout << "\nPlayer 2 (O) Wins!";
+    else if (win==0) std::cout << "\nGame Drawn!";
 }
